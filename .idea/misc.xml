@@ -6,9 +6,13 @@
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/drawable/active_button.xml" value="0.1865" />
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/drawable/market_content_bg.xml" value="0.1865" />
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/activity_main.xml" value="0.26875" />
+        <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/currency_item_layout.xml" value="0.26875" />
+        <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/fragment_details.xml" value="0.26875" />
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/fragment_home.xml" value="0.26875" />
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/fragment_market.xml" value="0.2546875" />
+        <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/fragment_top_loss_gain.xml" value="0.26875" />
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/fragment_watch_list.xml" value="0.26875" />
+        <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/layout/top_currency_layout.xml" value="0.26875" />
         <entry key="..\:/Android Apps By ShaShank/APPS FOR INTERN/CryptoApp2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2677083333333333" />
       </map>
     </option>

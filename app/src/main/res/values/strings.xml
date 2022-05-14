@@ -2,4 +2,14 @@
     <string name="app_name">CryptoApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_hint">Search Crypto</string>
+    <string name="not_found">Not Found any Data</string>
+    <string name="empty_watchlist">WatchList is Empty</string>
+
+    <string name="_15m">15 min</string>
+    <string name="_1h">1 Hour</string>
+    <string name="_4h">4 Hour</string>
+    <string name="_1d">1 Day</string>
+    <string name="_1w">1 Week</string>
+    <string name="_1m">1 min</string>
 </resources>
