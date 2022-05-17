@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.contentValuesOf
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.sharkBytesLab.cryptoapp.Fragments.HomeFragment
+import com.sharkBytesLab.cryptoapp.Fragments.HomeFragmentDirections
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
 import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.CurrencyItemLayoutBinding
@@ -50,6 +53,12 @@ class MarketAdapter(var context : Context, var list: List<CryptoCurrency>) : Rec
             holder.binding.currencyChangeTextView.text = "${String.format("%.02f", item.quotes[0].percentChange24h)} %"
         }
 
+        holder.itemView.setOnClickListener{
+            findNavController(it).navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
+            )
+        }
+
 
     }
 
@@ -57,3 +66,4 @@ class MarketAdapter(var context : Context, var list: List<CryptoCurrency>) : Rec
         return list.size
     }
 }
+
