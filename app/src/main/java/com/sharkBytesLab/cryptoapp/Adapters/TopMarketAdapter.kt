@@ -4,8 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.sharkBytesLab.cryptoapp.Fragments.HomeFragmentDirections
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
 import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.TopCurrencyLayoutBinding
@@ -40,6 +42,11 @@ class TopMarketAdapter(var context : Context, val list : List<CryptoCurrency>) :
         holder.binding.topCurrencyChangeTextView.setTextColor(context.resources.getColor(R.color.red))
         holder.binding.topCurrencyChangeTextView.text = "${String.format("%.02f", item.quotes[0].percentChange24h)} %"
     }
+
+        holder.itemView.setOnClickListener{
+            Navigation.findNavController(it).navigate(
+                HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item))
+        }
     }
 
 

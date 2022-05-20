@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.sharkBytesLab.cryptoapp.Fragments.HomeFragment
 import com.sharkBytesLab.cryptoapp.Fragments.HomeFragmentDirections
 import com.sharkBytesLab.cryptoapp.Fragments.MarketFragmentDirections
+import com.sharkBytesLab.cryptoapp.Fragments.WatchListFragmentDirections
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
 import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.CurrencyItemLayoutBinding
@@ -73,6 +74,11 @@ class MarketAdapter(var context: Context, var list: List<CryptoCurrency>,var typ
                 findNavController(it).navigate(
                     MarketFragmentDirections.actionMarketFragmentToDetailsFragment(item))
             }
+            else{
+                findNavController(it).navigate(
+                    WatchListFragmentDirections.actionWatchListFragmentToDetailsFragment(item))
+            }
+
         }
 
 
