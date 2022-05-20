@@ -11,7 +11,6 @@ import com.sharkBytesLab.cryptoapp.APIS.ApiInterface
 import com.sharkBytesLab.cryptoapp.APIS.ApiUtilities
 import com.sharkBytesLab.cryptoapp.Adapters.MarketAdapter
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
-import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.FragmentTopLossGainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -63,7 +62,7 @@ class TopLossGainFragment : Fragment() {
                         }
 
                         binding.topGainLoseRecyclerView.adapter =
-                            MarketAdapter(requireContext(), list)
+                            MarketAdapter(requireContext(), list, "home")
                     }else{
                         list.clear()
                         for (i in 0..49) {
@@ -71,7 +70,7 @@ class TopLossGainFragment : Fragment() {
                         }
 
                         binding.topGainLoseRecyclerView.adapter =
-                            MarketAdapter(requireContext(), list)
+                            MarketAdapter(requireContext(), list, "home")
 
                     }
 

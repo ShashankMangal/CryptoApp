@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sharkBytesLab.cryptoapp.Fragments.HomeFragment
 import com.sharkBytesLab.cryptoapp.Fragments.HomeFragmentDirections
+import com.sharkBytesLab.cryptoapp.Fragments.MarketFragmentDirections
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
 import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.CurrencyItemLayoutBinding
 
-class MarketAdapter(var context : Context, var list: List<CryptoCurrency>) : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(){
+class MarketAdapter(var context: Context, var list: List<CryptoCurrency>,var type: String) : RecyclerView.Adapter<MarketAdapter.MarketViewHolder>(){
 
     inner class MarketViewHolder(view : View) : RecyclerView.ViewHolder(view){
 
@@ -26,6 +27,12 @@ class MarketAdapter(var context : Context, var list: List<CryptoCurrency>) : Rec
 
         return MarketViewHolder(LayoutInflater.from(context).inflate(R.layout.currency_item_layout, parent, false))
 
+    }
+
+    fun updateList(dataItem :List<CryptoCurrency>)
+    {
+        list = dataItem
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: MarketViewHolder, position: Int) {
@@ -54,9 +61,18 @@ class MarketAdapter(var context : Context, var list: List<CryptoCurrency>) : Rec
         }
 
         holder.itemView.setOnClickListener{
+
+            if(type == "home")
+            {
             findNavController(it).navigate(
                 HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
             )
+            }
+            else if(type == "market")
+            {
+                findNavController(it).navigate(
+                    MarketFragmentDirections.actionMarketFragmentToDetailsFragment(item))
+            }
         }
 
 
