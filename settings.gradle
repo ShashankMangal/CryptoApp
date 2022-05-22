@@ -13,5 +13,5 @@ dependencyResolutionManagement {
         maven { url 'https://www.jitpack.io' }
     }
 }
-rootProject.name = "CryptoApp"
+rootProject.name = "CoinNet"
 include ':app'

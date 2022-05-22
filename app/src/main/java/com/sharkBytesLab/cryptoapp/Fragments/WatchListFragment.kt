@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
-import android.webkit.RenderProcessGoneDetail
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -15,11 +14,12 @@ import com.sharkBytesLab.cryptoapp.APIS.ApiInterface
 import com.sharkBytesLab.cryptoapp.APIS.ApiUtilities
 import com.sharkBytesLab.cryptoapp.Adapters.MarketAdapter
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
-import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.FragmentWatchListBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class WatchListFragment : Fragment() {
@@ -53,6 +53,8 @@ class WatchListFragment : Fragment() {
                             }
                         }
                     }
+
+                    Collections.reverse(watchListItem)
 
                     binding.spinKitView.visibility = GONE
                     binding.watchlistRecyclerView.adapter = MarketAdapter(requireContext(), watchListItem, "watchfragment")

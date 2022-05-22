@@ -15,7 +15,6 @@ import com.sharkBytesLab.cryptoapp.APIS.ApiInterface
 import com.sharkBytesLab.cryptoapp.APIS.ApiUtilities
 import com.sharkBytesLab.cryptoapp.Adapters.TopLossGainPagerAdapter
 import com.sharkBytesLab.cryptoapp.Adapters.TopMarketAdapter
-import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.FragmentHomeBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

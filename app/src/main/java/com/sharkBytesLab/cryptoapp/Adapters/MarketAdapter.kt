@@ -4,11 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.contentValuesOf
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sharkBytesLab.cryptoapp.Fragments.HomeFragment
 import com.sharkBytesLab.cryptoapp.Fragments.HomeFragmentDirections
 import com.sharkBytesLab.cryptoapp.Fragments.MarketFragmentDirections
 import com.sharkBytesLab.cryptoapp.Fragments.WatchListFragmentDirections
