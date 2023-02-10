@@ -3,13 +3,21 @@ package com.sharkBytesLab.cryptoapp
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
+import com.applovin.mediation.MaxAd
+import com.applovin.mediation.MaxAdListener
+import com.applovin.mediation.MaxError
+import com.applovin.mediation.ads.MaxInterstitialAd
+import com.applovin.sdk.AppLovinSdk
 import com.sharkBytesLab.cryptoapp.databinding.ActivityMainBinding
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +35,19 @@ class MainActivity : AppCompatActivity() {
         popupMenu.inflate(R.menu.bottom_nav_menu)
         binding.bottomBar.setupWithNavController(popupMenu.menu, navController)
 
+
+        // Please make sure to set the mediation provider value to "max" to ensure proper functionality
+        AppLovinSdk.getInstance(this).mediationProvider = "max"
+        AppLovinSdk.initializeSdk(this) { }
+
+        binding.applovinAd.loadAd()
+
+
     }
+
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu,menu)

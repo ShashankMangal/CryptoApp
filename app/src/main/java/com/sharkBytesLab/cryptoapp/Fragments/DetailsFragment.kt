@@ -2,25 +2,34 @@ package com.sharkBytesLab.cryptoapp.Fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.applovin.mediation.MaxAd
+import com.applovin.mediation.MaxAdListener
+import com.applovin.mediation.MaxError
+import com.applovin.mediation.ads.MaxInterstitialAd
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sharkBytesLab.cryptoapp.Models.CryptoCurrency
 import com.sharkBytesLab.cryptoapp.R
 import com.sharkBytesLab.cryptoapp.databinding.FragmentDetailsBinding
+import java.util.concurrent.TimeUnit
 
 
 class DetailsFragment : Fragment() {
 
     lateinit var binding : FragmentDetailsBinding
     private val item : DetailsFragmentArgs by navArgs()
+    private var interstitialAd: MaxInterstitialAd? = null
+    private var retry = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +45,48 @@ class DetailsFragment : Fragment() {
         setButtonOnClick(data)
 
         addToWatchList(data)
+        createInterstitialAd()
+        try {
+            if (interstitialAd!!.isReady) {
+                interstitialAd!!.showAd()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(activity, e.message.toString(), Toast.LENGTH_SHORT).show()
+            Log.v("Reset Error", e.message.toString())
+        }
 
         return binding.root
+    }
+
+    private fun createInterstitialAd() {
+        interstitialAd = MaxInterstitialAd(resources.getString(R.string.applovin_inter_adId), activity)
+        val adListener: MaxAdListener = object : MaxAdListener {
+            override fun onAdLoaded(ad: MaxAd) {
+                Log.e("Reset Error", "Loaded")
+            }
+
+            override fun onAdDisplayed(ad: MaxAd) {
+                Log.e("Reset Error", "Displayed")
+                Toast.makeText(
+                    activity,
+                    "Ok : " + ad.revenue.toString() + " " + ad.revenuePrecision,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+            override fun onAdHidden(ad: MaxAd) {}
+            override fun onAdClicked(ad: MaxAd) {}
+            override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
+                retry++
+                val delay =
+                    TimeUnit.SECONDS.toMillis(Math.pow(2.0, Math.min(6, retry).toDouble()).toLong())
+                Handler().postDelayed({ interstitialAd!!.loadAd() }, delay)
+            }
+
+            override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {}
+        }
+        interstitialAd!!.setListener(adListener)
+        interstitialAd!!.loadAd()
     }
 
     var watchList : ArrayList<String>? = null

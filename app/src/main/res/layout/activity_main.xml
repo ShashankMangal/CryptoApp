@@ -13,9 +13,19 @@
         app:navGraph="@navigation/nav"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintBottom_toTopOf="@id/applovinAd"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.applovin.mediation.ads.MaxAdView
+        android:id="@+id/applovinAd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        xmlns:maxads="http://schemas.applovin.com/android/1.0"
+        maxads:adUnitId="7a4e4d31d6d235b5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </com.applovin.mediation.ads.MaxAdView>
 
     <me.ibrahimsn.lib.SmoothBottomBar
         android:layout_width="match_parent"
