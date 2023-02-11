@@ -17,10 +17,13 @@
         android:theme="@style/Theme.CryptoApp"
         tools:targetApi="31">
         <activity
-            android:name="com.sharkBytesLab.cryptoapp.PolicyActivity"
+            android:name=".SupportUsActivity"
             android:exported="false" />
         <activity
-            android:name="com.sharkBytesLab.cryptoapp.MainActivity"
+            android:name=".PolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +35,6 @@
         <meta-data
             android:name="applovin.sdk.key"
             android:value="doNokpQpB4U8uCdC0RFRN7O2VWKagVVGIFFffq_NSgiVQ4_TOoqDFOmBgdKpxUgGSRpRiC39b85dC8_TkifX2y" />
-
     </application>
 
 </manifest>

@@ -18,5 +18,10 @@
         android:title="Policy"
         app:showAsAction="ifRoom"/>
 
+    <item android:id="@+id/support"
+        android:icon="@drawable/support_asset"
+        android:title="Support Us"
+        app:showAsAction="always"/>
+
 
 </menu>
