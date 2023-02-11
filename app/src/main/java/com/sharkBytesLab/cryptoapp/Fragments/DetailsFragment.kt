@@ -28,7 +28,7 @@ class DetailsFragment : Fragment() {
 
     lateinit var binding : FragmentDetailsBinding
     private val item : DetailsFragmentArgs by navArgs()
-    private var interstitialAd: MaxInterstitialAd? = null
+    private lateinit var interstitialAd: MaxInterstitialAd
     private var retry = 0
 
     override fun onCreateView(
@@ -45,55 +45,14 @@ class DetailsFragment : Fragment() {
         setButtonOnClick(data)
 
         addToWatchList(data)
-        createInterstitialAd()
-        try {
-            if (interstitialAd!!.isReady) {
-                interstitialAd!!.showAd()
-            }
-        } catch (e: Exception) {
-            Toast.makeText(activity, e.message.toString(), Toast.LENGTH_SHORT).show()
-            Log.v("Reset Error", e.message.toString())
-        }
 
         return binding.root
-    }
-
-    private fun createInterstitialAd() {
-        interstitialAd = MaxInterstitialAd(resources.getString(R.string.applovin_inter_adId), activity)
-        val adListener: MaxAdListener = object : MaxAdListener {
-            override fun onAdLoaded(ad: MaxAd) {
-                Log.e("Reset Error", "Loaded")
-            }
-
-            override fun onAdDisplayed(ad: MaxAd) {
-                Log.e("Reset Error", "Displayed")
-                Toast.makeText(
-                    activity,
-                    "Ok : " + ad.revenue.toString() + " " + ad.revenuePrecision,
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-
-            override fun onAdHidden(ad: MaxAd) {}
-            override fun onAdClicked(ad: MaxAd) {}
-            override fun onAdLoadFailed(adUnitId: String, error: MaxError) {
-                retry++
-                val delay =
-                    TimeUnit.SECONDS.toMillis(Math.pow(2.0, Math.min(6, retry).toDouble()).toLong())
-                Handler().postDelayed({ interstitialAd!!.loadAd() }, delay)
-            }
-
-            override fun onAdDisplayFailed(ad: MaxAd, error: MaxError) {}
-        }
-        interstitialAd!!.setListener(adListener)
-        interstitialAd!!.loadAd()
     }
 
     var watchList : ArrayList<String>? = null
     var watchListIsChecked = false
     private fun addToWatchList(data: CryptoCurrency)
     {
-
         readData()
 
         watchListIsChecked = if(watchList!!.contains(data.symbol))
