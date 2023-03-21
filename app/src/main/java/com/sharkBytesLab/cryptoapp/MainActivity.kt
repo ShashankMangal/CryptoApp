@@ -94,6 +94,12 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun rewards()
+    {
+        val intent = Intent(this, RewardActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId)
@@ -102,6 +108,7 @@ class MainActivity : AppCompatActivity() {
             R.id.share -> sharing()
             R.id.policy -> checkPolicy()
             R.id.support -> thanksForSupporting()
+            R.id.support2 -> rewards()
         }
         return super.onOptionsItemSelected(item)
     }

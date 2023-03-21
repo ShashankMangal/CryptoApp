@@ -15,13 +15,17 @@
 
     <item android:id="@+id/share"
         android:icon="@drawable/ic_baseline_share_24"
-        android:title="Policy"
+        android:title="Share"
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/support"
         android:icon="@drawable/support_asset"
         android:title="Support Us"
         app:showAsAction="always"/>
+
+    <item android:id="@+id/support2"
+        android:icon="@drawable/support_asset"
+        android:title="Video Ads" />
 
 
 </menu>
